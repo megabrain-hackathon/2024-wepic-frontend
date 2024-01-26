@@ -11,7 +11,9 @@ import 'package:get/get.dart';
 import 'package:home_widget/home_widget.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image/image.dart' as img;
+import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wepic/controller/saved_images_controller.dart';
 import 'package:wepic/util/toast.dart';
 import 'package:wepic/widget/wepic_image.dart';
 
@@ -29,6 +31,7 @@ class _CameraPageState extends State<CameraPage> {
   CameraController? _cameraController;
   List<CameraDescription>? _cameras = [];
   int selectedCameraIndex = 0;
+  final controller = Get.put<SavedImagesController>(SavedImagesController());
 
   @override
   void initState() {
@@ -44,6 +47,16 @@ class _CameraPageState extends State<CameraPage> {
     final iosInfo = await deviceInfo.iosInfo;
     String? deviceId = iosInfo.identifierForVendor;
     prefs.setString('deviceId', deviceId!);
+    print(deviceId);
+  }
+
+  Future<void> saveImage(File image) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final imagePath =
+        '${directory.path}/${DateTime.now().toIso8601String()}.png';
+    await image.copy(imagePath);
+    // 저장된 이미지 경로를 관리할 리스트에 추가
+    controller.savedImages.add(imagePath);
   }
 
   Future<void> _initializeCamera() async {
@@ -125,6 +138,7 @@ class _CameraPageState extends State<CameraPage> {
                     WepicWidgetImage(imageFile: File(_image!.path)),
                     key: 'fileName',
                   );
+                  saveImage(File(_image!.path));
                   await HomeWidget.saveWidgetData('fileName', filename);
 
                   await HomeWidget.updateWidget(
@@ -206,6 +220,8 @@ class _CameraPageState extends State<CameraPage> {
                     WepicWidgetImage(imageFile: File(_image!.path)),
                     key: 'fileName',
                   );
+                  saveImage(File(_image!.path));
+
                   await HomeWidget.saveWidgetData('fileName', filename);
 
                   await HomeWidget.updateWidget(
@@ -308,7 +324,7 @@ class _CameraPageState extends State<CameraPage> {
                   borderRadius: BorderRadius.all(Radius.circular(20))),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.width / 3,
+              height: MediaQuery.of(context).size.width / 5,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -347,6 +363,10 @@ class _CameraPageState extends State<CameraPage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: MediaQuery.of(context).size.width / 8,
+            ),
+            ElevatedButton(onPressed: () {}, child: Text('사진 갱신'))
           ],
         ),
       ),

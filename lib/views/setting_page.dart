@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:wepic/widget/user_profile_card.dart';
 
 class SettingPage extends StatelessWidget {
@@ -55,8 +57,11 @@ class SettingPage extends StatelessWidget {
                             CupertinoDialogAction(
                               child: const Text("방 나가기"),
                               textStyle: const TextStyle(color: Colors.red),
-                              onPressed: () {
-                                Get.back();
+                              onPressed: () async {
+                                SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+                                await prefs.remove('roomId');
+                                Get.offAllNamed('/room');
                               },
                             ),
                           ],
