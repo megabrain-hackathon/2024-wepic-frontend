@@ -13,29 +13,27 @@ class UserCard extends StatefulWidget {
 }
 
 class _UserProfileCardState extends State<UserCard> {
+  String _nickname = '';
+  @override
+  void initState() {
+    super.initState();
+    getNickName().then((value) {
+      setState(() {
+        _nickname = value;
+      });
+    });
+  }
+
+  getNickName() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('nickname');
+  }
+
   void changeUsernameState(String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    // if (nickname == value) return;
-    if (value.isEmpty) {
-      showToast('닉네임을 입력하세요.');
-    } else if (value.length < 3 || value.length > 10) {
-      showToast('닉네임은 3글자 이상 10글자 이하로 입력해주세요.');
-    } else if (!RegExp(r'^[a-zA-Z가-힣_]*[a-zA-Z가-힣][a-zA-Z가-힣_]*$')
-        .hasMatch(value)) {
-      showToast('닉네임은 한글, 영어, 숫자만 입력 가능합니다.');
-    } else {
-      EasyLoading.show(status: '닉네임 변경 중...');
-      // final response = await postChangeNickname(value);
-      // if (response?.statusCode != 200) {
-      //   EasyLoading.showError('닉네임 변경 실패!');
-      //   return;
-      // }
-      // setState(() {
-      //   lc.nickname = value;
-      // });
-      // prefs.setString('nick-name', value);
-      // EasyLoading.showSuccess('닉네임 변경 완료!');
-    }
+    EasyLoading.show(status: '닉네임 변경 중...');
+    await prefs.setString('nickname', value);
+    EasyLoading.dismiss();
   }
 
   @override
@@ -65,7 +63,7 @@ class _UserProfileCardState extends State<UserCard> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        '김동현',
+                        _nickname,
                         style: const TextStyle(
                             fontSize: 18.0, fontWeight: FontWeight.bold),
                       ),
@@ -86,13 +84,13 @@ class _UserProfileCardState extends State<UserCard> {
                         context: context,
                         builder: (context) {
                           final TextEditingController _nicknameController =
-                              TextEditingController();
+                              TextEditingController(text: _nickname);
 
                           return CupertinoAlertDialog(
                             title: const Text('닉네임 변경'),
                             content: CupertinoTextField(
                               style: const TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                               controller: _nicknameController,
                               placeholder: '새로운 닉네임을 입력해주세요.',
@@ -105,8 +103,17 @@ class _UserProfileCardState extends State<UserCard> {
                                 child: const Text('취소'),
                               ),
                               CupertinoDialogAction(
-                                onPressed: () {
+                                onPressed: () async {
+                                  final SharedPreferences prefs =
+                                      await SharedPreferences.getInstance();
+
                                   final newNickname = _nicknameController.text;
+                                  await prefs.setString(
+                                      'nickname', newNickname);
+
+                                  setState(() {
+                                    _nickname = newNickname;
+                                  });
                                   Get.back();
                                 },
                                 child: const Text('변경'),
@@ -124,7 +131,7 @@ class _UserProfileCardState extends State<UserCard> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text('나의 방',
+                Text('나의 방 - 123456',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

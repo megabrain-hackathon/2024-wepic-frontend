@@ -23,6 +23,9 @@ dependencies:
   image: ^4.1.4
   device_info_plus: ^9.1.1
   share_plus: ^7.2.1
+  permission_handler: ^11.2.0
+  http: ^1.2.0
+  path_provider: ^2.1.2
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +34,9 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - lib/assets/icon/checkbox_enable.png
+    - lib/assets/icon/checkbox_disable.png
+    - lib/assets/icon/permission_device.png
+    - lib/assets/icon/permission_location.png
