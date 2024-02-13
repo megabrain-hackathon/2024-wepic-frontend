@@ -15,8 +15,8 @@
         <th colspan="5">메가톤 2024 위픽 개발팀</th>
         <tr>
             <td><a href="https://github.com/ShinJongUng">신종웅</a></td>
-            <td><a href="https://github.com/haroya01">김동현</a></td>
-            <td>이시영</td>
+            <td><a href="https://github.com/haroya01">김동현</a></td>
+            <td>김경민</td>
         </tr>
         <tr>
             <td>
@@ -34,17 +34,8 @@
 <br/>
 
 ## 프로젝트 설명
-### 소마 BAP.ZIP은 SW마에스트로 14기 미니 프로젝트로, 소마인을 위한 연수센터 근처 **맛집 지도**입니다.
+### 위픽은 다른 같은 방에 들어와있는 사용자들끼리 사진을 찍어 서로의 위젯으로 공유할 수 있는 SNS입니다.
+<img width="1278" alt="스크린샷 2023-04-26 시간: 18 26 13" src="https://cdn.discordapp.com/attachments/1091676272297513093/1206966014068400128/001.png?ex=65ddedb2&is=65cb78b2&hm=842d462e08012d0bf824ec40092e476855b4ee8e5d7262a698c6eb82d62a3519&">
 
-#### 1. 별점 및 리뷰순으로 정렬하여, 자신이 원하는 맛집들을 쉽게 찾을 수 있습니다.
-<img width="1278" alt="스크린샷 2023-04-26 시간: 18 26 13" src="https://user-images.githubusercontent.com/75533232/234533021-4e21e2e2-43eb-41e1-ba81-234cfae10398.png">
+<img width="1278" alt="스크린샷 2023-04-26 시간: 18 26 13" src="https://cdn.discordapp.com/attachments/1091676272297513093/1206966013674131496/002.png?ex=65ddedb2&is=65cb78b2&hm=6a94f80703dbaface42e309a3222b1c5d6199f21d7cf8cd91f82aa2d20b96243&">
 
-#### 2. 자신만이 알고 있는 맛집을 직접 등록하고 리뷰를 작성할 수 있습니다.
-<img width="1356" alt="스크린샷 2023-04-26 시간: 18 34 28" src="https://user-images.githubusercontent.com/75533232/234535153-ceb7e3f6-f706-4aa8-b26b-784f3b457e78.png">
-
-<br/>
-<br/>
-
-## 프로젝트 아키텍쳐
-
- <img src="https://cdn.discordapp.com/attachments/1091676313540120636/1100657095675744266/project-architecture.png">
