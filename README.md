@@ -12,29 +12,20 @@
 <br/>
 <div align="center">
     <table border="1">
-        <th colspan="5">소프트웨어 마에스트로 미니프로젝트 48팀</th>
+        <th colspan="5">메가톤 2024 위픽 개발팀</th>
         <tr>
             <td><a href="https://github.com/ShinJongUng">신종웅</a></td>
-            <td><a href="https://github.com/SoobinJung1013">정수빈</a></td>
-            <td><a href="https://github.com/Bona04">이시영</a></td>
-            <td><a href="https://github.com/HanDaYeon-coder">한다연</a></td>
-            <td><a href="https://github.com/thguss">김소현</a></td>
+            <td><a href="https://github.com/haroya01">김동현</a></td>
+            <td>이시영</td>
         </tr>
         <tr>
             <td>
                 <img src="https://avatars.githubusercontent.com/u/65454966" width='120' />
             </td>
             <td>
-                <img src="https://avatars.githubusercontent.com/u/76704035?v=4" width='120' />
+                <img src="https://avatars.githubusercontent.com/u/128161745?v=4" width='120' />
             </td>
             <td>
-                <img src="https://avatars.githubusercontent.com/u/60744262?v=4" width='120' />
-            </td>
-            <td>
-                <img src="https://avatars.githubusercontent.com/u/75533232?v=4" width='120' />
-            </td>
-            <td>
-                <img src="https://avatars.githubusercontent.com/u/55437339?v=4" width='120' />
             </td>
         </tr>
     </table>
