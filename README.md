@@ -5,9 +5,9 @@
 
 
 <p align="center">
-    <img src="https://skillicons.dev/icons?i=flutter,swiftui">
+    <img src="https://skillicons.dev/icons?i=flutter,swift">
     <br />
-    기술스택: Flutter, SwiftUI
+    기술스택: Flutter, Swift
   </p>
 <br/>
 <div align="center">
